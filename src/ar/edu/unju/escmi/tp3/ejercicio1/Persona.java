@@ -1,63 +1,61 @@
 package ar.edu.unju.escmi.tp3.ejercicio1;
+
 import java.time.LocalDate;
 import java.time.Period;
+import java.time.format.DateTimeFormatter;
 
 public class Persona {
-    private int dni;
     private String nombre;
-    private LocalDate fecNac;
-    private String provincia;
-    private String domicilio;
+    private String dni;
+    private LocalDate fechaNacimiento;
 
-public Persona() {
-    // Constructor por defecto
-}
-
-public Persona(int dni, String nombre, LocalDate fecNac, String domicilio, String provincia) {
-        this.dni = dni;
-        this.nombre = nombre;
-        this.fecNac = fecNac;
-        this.domicilio = domicilio;
-        this.provincia = provincia;
+    // Constructores
+    public Persona() {
+        this.nombre = "";
+        this.dni = "";
+        this.fechaNacimiento = null;
     }
 
-public Persona(int dni, String nombre, LocalDate fecNac) {
-        this.dni = dni;
+    public Persona(String nombre, String dni, LocalDate fechaNacimiento) {
         this.nombre = nombre;
-        this.fecNac = fecNac;
-        this.provincia = "Jujuy";
-        // domicilio queda null
+        this.dni = dni;
+        this.fechaNacimiento = fechaNacimiento;
     }
-    public int getDni() { return dni; }
-    public void setDni(int dni) { this.dni = dni; }
 
+    // Getters y setters
     public String getNombre() { return nombre; }
     public void setNombre(String nombre) { this.nombre = nombre; }
 
-    public LocalDate getFecNac() { return fecNac; }
-    public void setFecNac(LocalDate fecNac) { this.fecNac = fecNac; }
+    public String getDni() { return dni; }
+    public void setDni(String dni) { this.dni = dni; }
 
-    public String getDomicilio() { return domicilio; }
-    public void setDomicilio(String domicilio) { this.domicilio = domicilio; }
+    public LocalDate getFechaNacimiento() { return fechaNacimiento; }
+    public void setFechaNacimiento(LocalDate fechaNacimiento) { this.fechaNacimiento = fechaNacimiento; }
 
-    public String getProvincia() { return provincia; }
-    public void setProvincia(String provincia) { this.provincia = provincia; }
-     public int calcularEdad() {
-        if (fecNac == null) return -1;
-        return Period.between(fecNac, LocalDate.now()).getYears();
+    // Métodos públicos que usan internamente los privados
+    public int getEdad() {
+        return calcularEdad(); // llamar a método privado
     }
 
-    public boolean esMayorDeEdad() {
+    public boolean isMayorDeEdad() {
+        return esMayorDeEdad(); // wrapper público
+    }
+
+    // Metodos privados
+    private int calcularEdad() {
+        if (fechaNacimiento == null) return 0;
+        return Period.between(fechaNacimiento, LocalDate.now()).getYears();
+    }
+
+    private boolean esMayorDeEdad() {
         return calcularEdad() >= 18;
     }
-    public void mostrarMensaje() {
-        System.out.println("DNI: " + dni);
-        System.out.println("Nombre: " + nombre);
-        System.out.println("Fecha de nacimiento: " + fecNac);
-        System.out.println("Domicilio: " + domicilio);
-        System.out.println("Provincia: " + provincia);
-        int edad = calcularEdad();
-        System.out.println("Edad: " + (edad != -1 ? edad : "No disponible"));
-        System.out.println(esMayorDeEdad() ? "La persona es mayor de edad" : "La persona no es mayor de edad");
+
+    @Override
+    public String toString() {
+        DateTimeFormatter f = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String fn = fechaNacimiento == null ? "N/D" : fechaNacimiento.format(f);
+        return "Persona{nombre='" + nombre + "', dni='" + dni + "', fechaNacimiento=" + fn +
+               ", edad=" + getEdad() + ", mayor=" + esMayorDeEdad() + "}";
     }
-}
+} 
