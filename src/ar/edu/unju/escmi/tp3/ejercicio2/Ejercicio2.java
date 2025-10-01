@@ -1,10 +1,6 @@
 package ar.edu.unju.escmi.tp3.ejercicio2;
-
 import java.util.Scanner;
 
-/**
- * Clase principal con menú para interactuar con objetos GatoSimple.
- */
 public class Ejercicio2 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -16,7 +12,7 @@ public class Ejercicio2 {
             System.out.println("\n--- MENÚ DE GATOS ---");
             System.out.println("1 – Crear gato simple");
             System.out.println("2 – Dar de comer a un gato simple");
-            System.out.println("3 – Mostrar todos los gatos");
+            System.out.println("3 – Mostrar todos los datos");
             System.out.println("4 – Crear gato contrincante y pelear");
             System.out.println("5 – Salir");
             System.out.print("Seleccione una opción: ");
@@ -24,7 +20,7 @@ public class Ejercicio2 {
             scanner.nextLine(); // Limpiar buffer
 
             switch (opcion) {
-                case 1:
+                case 1: // Gato Simple
                     System.out.print("Nombre: ");
                     String nombre = scanner.nextLine();
                     System.out.print("Color: ");
@@ -42,7 +38,7 @@ public class Ejercicio2 {
                     gatoSimple = new GatoSimple(nombre, color, peso, raza, edad, sexo);
                     break;
 
-                case 2:
+                case 2: // Dar de comer
                     if (gatoSimple != null) {
                         System.out.print("Ingrese comida para el gato: ");
                         String comida = scanner.nextLine();
@@ -52,7 +48,7 @@ public class Ejercicio2 {
                     }
                     break;
 
-                case 3:
+                case 3: // Mostrar datos
                     if (gatoSimple != null) {
                         System.out.println("\n--- GATO SIMPLE ---");
                         gatoSimple.mostrarDatos();
@@ -65,7 +61,7 @@ public class Ejercicio2 {
                     }
                     break;
 
-                case 4:
+                case 4: // Pelear
                     if (gatoSimple != null) {
                         System.out.print("Nombre del contrincante: ");
                         String nombreC = scanner.nextLine();
@@ -90,7 +86,7 @@ public class Ejercicio2 {
                     }
                     break;
 
-                case 5:
+                case 5: // Salir
                     System.out.println("Fin del programa.");
                     break;
 

@@ -1,13 +1,10 @@
-package ar.edu.unju.escmi.tp3.ejercicio3;
-
+package ar.edu.unju.escmi.tp3.ejercicio3; 
 import java.util.Scanner;
 
 public class Ejercicio3 {
-
     public static void main(String[] args) {
-        
         Scanner sc = new Scanner(System.in);
-        Empleado empleado = null; 
+        Empleado empleado = null;
         int opcion;
 
         do {
@@ -18,24 +15,23 @@ public class Ejercicio3 {
             System.out.println("4 - Salir");
             System.out.print("Ingrese una opción: ");
             opcion = sc.nextInt();
-            sc.nextLine(); 
+            sc.nextLine(); // Limpieza de buffer
 
             switch (opcion) {
                 case 1:
+                    // Solicita datos y crea empleado
                     System.out.print("Ingrese nombre: ");
                     String nombre = sc.nextLine();
-
                     System.out.print("Ingrese legajo: ");
                     int legajo = sc.nextInt();
-
                     System.out.print("Ingrese salario: ");
                     double salario = sc.nextDouble();
-
                     empleado = new Empleado(nombre, legajo, salario);
                     System.out.println("Empleado creado correctamente.");
                     break;
 
                 case 2:
+                    // Verifica legajo y aplica aumento
                     if (empleado != null) {
                         System.out.print("Ingrese el legajo del empleado: ");
                         int legajoBuscado = sc.nextInt();
@@ -50,6 +46,7 @@ public class Ejercicio3 {
                     break;
 
                 case 3:
+                    // Muestra datos del empleado
                     if (empleado != null) {
                         empleado.mostrarDatos();
                     } else {
@@ -67,7 +64,6 @@ public class Ejercicio3 {
         } while (opcion != 4);
 
         sc.close();
-    
     }
-
 }
+

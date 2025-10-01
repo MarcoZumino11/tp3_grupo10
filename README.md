@@ -21,5 +21,5 @@ Integrantes:
             Lautaro Muro – @Lautaro10L
             Lucas Luciano Camino – @Lucas2007040507
             Thiago Rueda – @Thiax
-            Lucas Fernandez – @peluk467
+            Lucas Fernandez Ocampos – @peluk467
             Marco Zumino – @MarcoZumino11

@@ -19,15 +19,15 @@ public class Ejercicio4 {
             opcion = scanner.nextInt();
             scanner.nextLine(); // Limpiar buffer
 
-            switch (opcion) {
-                case 1:
+            switch (opcion) { // Inicio del switch
+                case 1: // Crear cliente
                     if (contador < clientes.length) {
                         System.out.print("Ingrese DNI: ");
                         String dni = scanner.nextLine();
                         System.out.print("Ingrese nombre: ");
                         String nombre = scanner.nextLine();
                         System.out.print("Ingrese categoría (una letra): ");
-                        char categoria = scanner.nextLine().charAt(0);
+                        char categoria = scanner.nextLine().charAt(0); 
                         clientes[contador] = new Cliente(dni, nombre, categoria);
                         contador++;
                         System.out.println("Cliente creado correctamente.");
@@ -36,7 +36,7 @@ public class Ejercicio4 {
                     }
                     break;
 
-                case 2:
+                case 2: // Mostrar datos de un cliente por DNI
                     System.out.print("Ingrese el DNI a buscar: ");
                     String dniBuscado = scanner.nextLine();
                     boolean encontrado = false;
@@ -53,7 +53,7 @@ public class Ejercicio4 {
                     }
                     break;
 
-                case 3:
+                case 3: // Mostrar todos los clientes
                     if (contador == 0) {
                         System.out.println("No hay clientes registrados.");
                     } else {
@@ -65,7 +65,7 @@ public class Ejercicio4 {
                     }
                     break;
 
-                case 4:
+                case 4: // Mostrar clientes por categoría
                     System.out.print("Ingrese la categoría a buscar: ");
                     char categoriaBuscada = scanner.nextLine().charAt(0);
                     boolean hayCoincidencias = false;
@@ -82,14 +82,14 @@ public class Ejercicio4 {
                     }
                     break;
 
-                case 5:
+                case 5: // Salir
                     System.out.println("Fin del programa.");
                     break;
 
                 default:
                     System.out.println("Opción inválida.");
             }
-        } while (opcion != 5);
+        } while (opcion != 5); // Fin del bucle
 
         scanner.close();
     }
